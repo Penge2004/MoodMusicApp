@@ -1,13 +1,20 @@
 package APP.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class HelloWorldControllerForTestingHttp {
 
-    @RequestMapping
-    public String helloWorld() {
-        return "Hello World from Spring boot";
+    @GetMapping("/")
+    public String homePage() {
+        return "helloWorld";  // This matches the helloWorld.html file in templates/
+    }
+
+    @PostMapping("/submitFeeling")
+    @ResponseBody
+    public String handleUserInput(@RequestParam("feeling") String userInput) {
+        System.out.println("User feeling " + userInput);
+        return "Thank you for submitting " + userInput;
     }
 }
