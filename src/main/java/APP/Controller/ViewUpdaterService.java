@@ -32,7 +32,7 @@ public class ViewUpdaterService {
         List<Music> allMusic = musicRepository.findAll();
 
         for (Music music : allMusic) {
-            Integer newViews = youTubeService.fetchYouTubeViews(music.getVideoId());
+            Long newViews = youTubeService.fetchYouTubeViews(music.getVideoID());
 
             if (newViews != null) {
                 // Update total views

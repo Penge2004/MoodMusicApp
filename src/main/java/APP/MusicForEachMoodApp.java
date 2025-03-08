@@ -7,10 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 
 
+
 @SpringBootApplication
 public class MusicForEachMoodApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         SpringApplication.run(MusicForEachMoodApp.class, args);
     }
 

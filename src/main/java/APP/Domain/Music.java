@@ -15,10 +15,13 @@ public class Music {
     private String artist;
     private String mood;
     private String youtubeLink;
-    private int views;
+    private Long views;
     private LocalDate date;
 
-    public Music(Integer id, String title, String artist, String mood, String youtubeLink, int views, LocalDate date) {
+    @Column(name = "video_id")
+    private String videoID;
+
+    public Music(Integer id, String title, String artist, String mood, String youtubeLink, Long views, LocalDate date, String videoID) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -26,17 +29,19 @@ public class Music {
         this.youtubeLink = youtubeLink;
         this.views = views;
         this.date = date;
+        this.videoID = videoID;
     }
 
     public Music() {
 
     }
 
-    public String getVideoId() {
-        if (youtubeLink == null || !youtubeLink.contains("watch?v=")) {
-            return null;
-        }
-        return youtubeLink.split("watch\\?v=")[1].split("&")[0]; // Extracts video ID
+    public String getVideoID() {
+        return videoID;
+    }
+
+    public void setVideoID(String videoID) {
+        this.videoID = videoID;
     }
 
     public Integer getId() {
@@ -79,11 +84,11 @@ public class Music {
         this.youtubeLink = youtubeLink;
     }
 
-    public int getViews() {
+    public Long getViews() {
         return views;
     }
 
-    public void setViews(int views) {
+    public void setViews(Long views) {
         this.views = views;
     }
 
@@ -93,5 +98,19 @@ public class Music {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", mood='" + mood + '\'' +
+                ", youtubeLink='" + youtubeLink + '\'' +
+                ", views=" + views +
+                ", date=" + date +
+                ", videoID='" + videoID + '\'' +
+                '}';
     }
 }

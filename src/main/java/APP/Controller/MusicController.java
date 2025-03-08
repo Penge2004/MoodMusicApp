@@ -3,6 +3,8 @@ package APP.Controller;
 import APP.Domain.Music;
 import APP.RepositoryPackage.MusicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,9 +32,12 @@ public class MusicController {
     public String getTopMusic(@RequestParam("feeling") String feeling, Model model) {
         System.out.println("User feeling: " + feeling);
 
-        // Query the top 5 most-watched songs for today
+        // Query the top most-watched songs
         List<Music> topSongs = musicRepository.topMusic(feeling, LocalDate.now());
 
+        for (Music music : topSongs) {
+            System.out.println(music);
+        }
         // Add to model to pass to the HTML
         model.addAttribute("songs", topSongs);
         model.addAttribute("mood", feeling);
