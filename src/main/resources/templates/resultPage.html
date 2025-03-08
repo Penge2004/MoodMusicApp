@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Music</title>
+</head>
+<body>
+<h1>Top 5 Most-Watched Songs for "<span th:text="${mood}"></span>"</h1>
+
+<ul>
+    <li th:each="song : ${songs}">
+        <strong th:text="${song.title}"></strong> by <span th:text="${song.artist}"></span>
+        <br>
+        <a th:href="${song.youtubeLink}" target="_blank">Listen on YouTube</a>
+    </li>
+</ul>
+
+<a href="/">Go Back</a>
+</body>
+</html>
