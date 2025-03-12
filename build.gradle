@@ -17,15 +17,17 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.json:json:20210307'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA
+    implementation 'org.springframework.boot:spring-boot-starter-web'      // Web (REST API)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // (optional for web apps)
+    implementation 'org.json:json:20210307'                                 // Optional: For JSON parsing
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'         // DevTools (optional)
+    runtimeOnly 'org.postgresql:postgresql'                                 // PostgreSQL driver
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'  // Testing support
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'            // JUnit testing
+    implementation 'javax.persistence:javax.persistence-api:2.2'           // JPA annotations
 }
+
 
 
 tasks.named('test') {

@@ -1,55 +1,36 @@
 package APP.Domain;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "music")
 public class Music {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment for PostgreSQL
+    private Long id; // You can use Long instead of int for bigger ranges
 
     private String title;
     private String artist;
+
+    @Column(name = "total_views", nullable = false)
+    private int totalViews = 0;
+
+    @Column(name = "todays_views", nullable = false)
+    private int todaysViews = 0;
+
     private String mood;
-    private String youtubeLink;
-    private Long views;
-    private LocalDate date;
 
-    @Column(name = "videoID")
-    private String videoID;
+    private String link;
 
 
-    public Music(Integer id, String title, String artist, String mood, String youtubeLink, Long views, LocalDate date, String videoID) {
-        this.id = id;
-        this.title = title;
-        this.artist = artist;
-        this.mood = mood;
-        this.youtubeLink = youtubeLink;
-        this.views = views;
-        this.date = date;
-        this.videoID = videoID;
-    }
-
-    public Music() {
-
-    }
-
-    public String getVideoID() {
-        return videoID;
-    }
-
-    public void setVideoID(String videoID) {
-        this.videoID = videoID;
-    }
-
-    public Integer getId() {
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,6 +50,22 @@ public class Music {
         this.artist = artist;
     }
 
+    public int getTotalViews() {
+        return totalViews;
+    }
+
+    public void setTotalViews(int totalViews) {
+        this.totalViews = totalViews;
+    }
+
+    public int getTodaysViews() {
+        return todaysViews;
+    }
+
+    public void setTodaysViews(int todaysViews) {
+        this.todaysViews = todaysViews;
+    }
+
     public String getMood() {
         return mood;
     }
@@ -77,41 +74,12 @@ public class Music {
         this.mood = mood;
     }
 
-    public String getYoutubeLink() {
-        return youtubeLink;
+    public String getLink() {
+        return link;
     }
 
-    public void setYoutubeLink(String youtubeLink) {
-        this.youtubeLink = youtubeLink;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public Long getViews() {
-        return views;
-    }
-
-    public void setViews(Long views) {
-        this.views = views;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "Music{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", artist='" + artist + '\'' +
-                ", mood='" + mood + '\'' +
-                ", youtubeLink='" + youtubeLink + '\'' +
-                ", views=" + views +
-                ", date=" + date +
-                ", videoID='" + videoID + '\'' +
-                '}';
-    }
 }
