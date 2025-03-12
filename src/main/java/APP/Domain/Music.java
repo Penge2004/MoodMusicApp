@@ -18,8 +18,9 @@ public class Music {
     private Long views;
     private LocalDate date;
 
-    @Column(name = "video_id")
+    @Column(name = "videoID")
     private String videoID;
+
 
     public Music(Integer id, String title, String artist, String mood, String youtubeLink, Long views, LocalDate date, String videoID) {
         this.id = id;
